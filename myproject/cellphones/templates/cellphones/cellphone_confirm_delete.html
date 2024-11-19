@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Cellphone</title>
+</head>
+<body>
+    <h1>Delete Cellphone</h1>
+    <p>Are you sure you want to delete "{{ cellphone.brand }} {{ cellphone.model }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm</button>
+    </form>
+    <a href="{% url 'cellphone_list' %}">Cancel</a>
+</body>
+</html>

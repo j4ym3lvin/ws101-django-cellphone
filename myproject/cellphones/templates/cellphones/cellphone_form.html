@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/Edit Cellphone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin : 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{% if form.instance.pk %}Edit Cellphone{% else %}Add New Cellphone{% endif %}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="id_brand">Device Name:</label>
+            {{ form.brand }}
+
+            <label for="id_model">Model:</label>
+            {{ form.model }}
+
+            <label for="id_release_date">Release Date:</label>
+            {{ form.release_date }}
+
+            <label for="id_price">Price:</label>
+            {{ form.price }}
+
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'cellphone_list' %}">Cancel</a>
+    </div>
+</body>
+</html>
